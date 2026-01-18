@@ -1,0 +1,35 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.iml
+
+# Build outputs (we rebuild inside Docker)
+build/
+.dart_tool/
+
+# Platform-specific (not needed for web build)
+android/
+ios/
+macos/
+linux/
+windows/
+
+# Test files
+test/
+
+# Documentation
+*.md
+!README.md
+
+# Logs and analysis
+*.log
+analysis_report.txt
+
+# Misc
+.metadata
+.flutter-plugins
+.flutter-plugins-dependencies

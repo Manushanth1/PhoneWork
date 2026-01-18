@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "582339214398",
+    "project_id": "phonework-5c7d2",
+    "storage_bucket": "phonework-5c7d2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582339214398:android:94a383ac7bb65e8083256f",
+        "android_client_info": {
+          "package_name": "com.example.next_one"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7son96OsyEAcBLoDXG5omOpIw8cs2jwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
