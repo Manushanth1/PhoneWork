@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -5,8 +8,14 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+val keystorePropertiesFile = rootProject.file("key.properties")
+val keystoreProperties = Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
+
 android {
-    namespace = "com.example.next_one"
+    namespace = "com.phonework.app"
     compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
@@ -20,8 +29,17 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
+    signingConfigs {
+        create("release") {
+            keyAlias = keystoreProperties["keyAlias"] as String? ?: "phonework"
+            keyPassword = keystoreProperties["keyPassword"] as String? ?: "phonework123"
+            storeFile = file(keystoreProperties["storeFile"] as String? ?: "phonework-release-key.jks")
+            storePassword = keystoreProperties["storePassword"] as String? ?: "phonework123"
+        }
+    }
+
     defaultConfig {
-        applicationId = "com.example.next_one"
+        applicationId = "com.phonework.app"
         minSdk = flutter.minSdkVersion
         targetSdk = 36
         versionCode = flutter.versionCode
@@ -30,7 +48,9 @@ android {
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 }
